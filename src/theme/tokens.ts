@@ -23,7 +23,11 @@ export const SHADOW = {
 };
 
 export const TYPO = {
-  h1: { fontSize: moderateScale(22), fontWeight: "700", lineHeight: Platform.OS === "android" ? 28 : 26 },
+  h1: {
+    fontSize: moderateScale(22),
+    fontWeight: "700",
+    lineHeight: Platform.OS === "android" ? 28 : 26,
+  },
   h2: { fontSize: moderateScale(16), fontWeight: "700", lineHeight: 22 },
   body: { fontSize: moderateScale(13), fontWeight: "400", lineHeight: 18 },
   meta: { fontSize: moderateScale(12), fontWeight: "500", lineHeight: 16 },
@@ -31,12 +35,21 @@ export const TYPO = {
 
 export const GRID = (() => {
   const { width } = Dimensions.get("window");
-  // 安全留白 + 双列网格
+  // Safe padding + two-column grid
   const horizontalPadding = 16;
   const gap = 12;
   const columns = 2;
-  const itemWidth = Math.floor((width - horizontalPadding * 2 - gap * (columns - 1)) / columns);
-  const posterAspect = 2 / 3; // 电影海报常见 2:3
-  const itemHeight = Math.round(itemWidth / posterAspect + 64); // 64 预留给标题等信息
-  return { padding: horizontalPadding, gap, columns, itemWidth, itemHeight, posterAspect };
+  const itemWidth = Math.floor(
+    (width - horizontalPadding * 2 - gap * (columns - 1)) / columns
+  );
+  const posterAspect = 2 / 3; // Movie posters are commonly 2:3
+  const itemHeight = Math.round(itemWidth / posterAspect + 64); // 64 reserved for title and other info
+  return {
+    padding: horizontalPadding,
+    gap,
+    columns,
+    itemWidth,
+    itemHeight,
+    posterAspect,
+  };
 })();
